@@ -1,10 +1,10 @@
 <template>
   <div>
     <container style="width:60%; float:left">
-      <button class="short" v-on:click="movePage('buy')">구매</button>
-      <button class="short" v-on:click="movePage('refund')">환불</button><br>
-      <button class="long" v-on:click="movePage('mileage')">마일리지 확인</button><br>
-      <button class="long" v-on:click="movePage('signup')">회원가입</button><br>
+      <button class="short" v-on:click="movePage('SellectBuynRefund')">구매</button>
+      <button class="short" v-on:click="movePage('SellectBuynRefund')">환불</button><br>
+      <button class="long" v-on:click="movePage('CheckMileage')">마일리지 확인</button><br>
+      <button class="long" v-on:click="movePage('Signup')">회원가입</button><br>
       <button class="long" v-on:click="movePage('login')">관리자 로그인</button><br>
     </container>
     <container style="width:40%; float:right">

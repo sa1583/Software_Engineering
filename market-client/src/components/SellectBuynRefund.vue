@@ -6,7 +6,7 @@
 <script>
 import router from '../router'
 export default {
-  name: 'Buy',
+  name: 'SellectBuynRefund',
   data () {
     return {
       msg: 'Welcome to Your Vue.js App'
