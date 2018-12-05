@@ -6,5 +6,4 @@ function TradeInfo(buyerid, tradedateinfo, products, tradeid, deltamileage, isus
   this.deltaMileage = deltamileage
   this.isUseCard = isusecard
   this.totalPrice = totalprice
-
 };

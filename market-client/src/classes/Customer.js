@@ -136,4 +136,5 @@ Nonmember.prototype.refund = function(tradeId) {
   var trdinfo = tradeInfo
   trdinfo.deltaMileage = -trdinfo.deltaMileage
   trdinfo.totalPrice = -tradeInfo.totalPrice
+  DBMS.insertNewTradeInfo(trdinfo)
 };
