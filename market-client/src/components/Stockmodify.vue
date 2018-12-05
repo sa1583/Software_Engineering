@@ -32,12 +32,11 @@
             @open="open"
             @close="close"
           >
-            {{ props.item.number }}
+            <div>{{ props.item.number }}</div>
             <div slot="input" class="mt-3 title">수량 변경</div>
             <v-text-field
               slot="input"
-              v-bind:value="props.item.number"
-              v-on:change="e => props.item.name = e.target.value"
+              v-model="props.item.number"
               :rules="[max25chars]"
               label="Edit"
               single-line
