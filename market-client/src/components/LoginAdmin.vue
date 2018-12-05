@@ -1,12 +1,14 @@
 <template>
   <div>
-    <input v-model="pnumber" placeholder="전화번호를 입력하세요">
-    <button>확인</button>
+    비밀번호 입력:
+    <input></input>
+    <button>로그인</button>
   </div>
 </template>
 <script>
+import router from '../router'
 export default {
-  name: 'InputMemNum',
+  name: 'LoginAdmin',
   data () {
     return {
       msg: 'Welcome to Your Vue.js App'
@@ -14,3 +16,6 @@ export default {
   }
 }
 </script>
+
+<style>
+</style>

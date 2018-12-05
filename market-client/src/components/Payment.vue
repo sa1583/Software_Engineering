@@ -1,13 +1,11 @@
 <template>
   <div id="pay">
-
     <table class="table" id="w6">
       <thead>
         <tr>
           <th class="c1">회원 전화번호</th>
           <th class="c2">총 가격</th>
           <th class="c3">보유 마일리지</th>
-
         </tr>
       </thead>
       <tbody>
@@ -15,7 +13,6 @@
           <td class="c1">010-0000-0000</td>
           <td class="c2">18990</td>
           <td class="c3">0</td>
-
         </tr>
       </tbody>
     </table>
@@ -30,10 +27,6 @@
       <br>
       <button>결제</button>
     </form>
-
-
-
-
     <table class="table">
       <thead>
         <tr>
