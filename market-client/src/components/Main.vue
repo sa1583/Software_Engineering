@@ -1,8 +1,8 @@
 <template>
   <div>
     <container style="width:60%; float:left">
-      <button class="short" v-on:click="movePage('SellectBuynRefund')">구매</button>
-      <button class="short" v-on:click="movePage('SellectBuynRefund')">환불</button><br>
+      <button class="short" v-on:click="movePage('SellectMemeberOrNot/buy')">구매</button>
+      <button class="short" v-on:click="movePage('SellectMemeberOrNot/refund')">환불</button><br>
       <button class="long" v-on:click="movePage('CheckMileage')">마일리지 확인</button><br>
       <button class="long" v-on:click="movePage('Signup')">회원가입</button><br>
       <button class="long" v-on:click="movePage('LoginAdmin')">관리자 로그인</button><br>
@@ -33,7 +33,7 @@ export default {
   },
   methods:{
     movePage(page){
-      router.push({name:page})
+      router.push({path:page})
     }
   }
 }
@@ -44,6 +44,6 @@ export default {
     width:45%;
   }
   button.long{
-    width:91%;
+    width:90.5%;
   }
 </style>

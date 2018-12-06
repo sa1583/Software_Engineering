@@ -1,12 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import Main from '@/components/Main'
-import Buy from '@/components/Buy'
-import salescheck from '@/components/Salescheck'
-import stockcheck from '@/components/Stockcheck'
-import stockmodify from '@/components/Stockmodify'
-import productorder from '@/components/Productorder'
-import postdiscountinfo from '@/components/Postdiscountinfo'
 import SellectMemeberOrNot from '@/components/SellectMemeberOrNot'
 import LoginAdmin from '@/components/LoginAdmin'
 import CheckMileage from '@/components/CheckMileage'
@@ -17,46 +11,13 @@ import InputMemNum from '@/components/InputMemNum'
 import Refund from '@/components/Refund'
 import InputReceipt from '@/components/InputReceipt'
 
-
-
 Vue.use(Router)
-
 
 export default new Router({
   routes: [{
       path: '/',
-      name: 'home',
+      name: 'Main',
       component: Main
-    },
-    {
-      path: '/buy',
-      name: 'buy',
-      component: Buy
-    },
-    {
-      path: '/salescheck',
-      name: 'salescheck',
-      component: salescheck
-    },
-    {
-      path: '/stockcheck',
-      name: 'stockcheck',
-      component: stockcheck
-    },
-    {
-      path: '/stockmodify',
-      name: 'stockmodify',
-      component: stockmodify
-    },
-    {
-      path: '/productorder',
-      name: 'productorder',
-      component: productorder
-    },
-    {
-      path: '/postdiscountinfo',
-      name: 'postdiscountinfo',
-      component: postdiscountinfo
     },
     {
       path: '/SellectMemeberOrNot/:method',
@@ -82,22 +43,21 @@ export default new Router({
       name: 'AdminPage',
       component: AdminPage
     }, {
-      path: '/InputMemNum/:method',
+      path: '/SellectMemeberOrNot/InputMemNum/:method',
       name: 'InputMemNum',
       component: InputMemNum
     }, {
-      path: '/Payment/:who',
+      path: '/SellectMemeberOrNot/Payment/:who',
       name: 'Payment',
       component: Payment
     }, {
-      path: '/Refund/:who',
+      path: '/SellectMemeberOrNot/Refund/:who',
       name: 'Refund',
       component: Refund
     }, {
-      path: '/InputReceipt/:who',
+      path: '/SellectMemeberOrNot/InputReceipt/:who',
       name: 'InputReceipt',
       component: InputReceipt
     }
-  ],
-  mode: 'history'
+  ]
 })

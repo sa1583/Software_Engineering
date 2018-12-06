@@ -1,6 +1,5 @@
 <template>
   <div id="pay">
-
     <table class="table">
       <thead>
         <tr>
