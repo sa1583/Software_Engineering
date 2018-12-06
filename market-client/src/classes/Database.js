@@ -1,230 +1,226 @@
-//파일경로 지정해야함.
+module.exports = class Database {
+  constructor() {};
 
-function Database() {
-  this.id = "admin"
-  this.password = "1q2w3e4r!"
-  this.fs = require('fs')
-};
+  readDatabase(table) {
+    var fs = require('fs')
+    var fileRead = fs.readFileSync("../backend/data/" + table + ".json", 'utf8');
+    return JSON.parse(fileRead);
+  };
 
-Database.prototype.readDatabase = function(table) {
-  fileRead = fs.readFileSync("./public/json/" + table + ".json"); // 파일패스 수정
-  return JSON.parse(fileRead);
-};
+  writeDatabase(table, data) {
+    var fs = require('fs')
+    fs.writeFile('../backend/data/' + table + '.json', JSON.stringify(data), 'utf-8', function(e) {
+      if (e) {
+        console.log(e);
+      } else {
+        console.log('WRITE DONE!');
+      }
+    });
+  };
 
-Database.prototype.writeDatabase = function(table, data) {
-  fs.writeFile('./public/json/' + table + '.json', JSON.stringify(data), 'utf-8', function(e) {
-    if (e) {
-      console.log(e);
-    } else {
-      console.log('WRITE DONE!');
+  getMemberByPhonenumber(phnum) {
+    var data = this.readDatabase("Member")
+    for (var i = 0; i < data.length; i++) {
+      if (data[i].phoneNumber == phnum) {
+        return data[i]
+      }
     }
-  });
-};
+    return false
+  };
 
-Database.prototype.getMemberByPhonenumber = function(phnum) {
-  data = Database.readDatabase("Member")
+  getTradeInfoById(id) {
+    var data = this.readDatabase("TradeInfo")
 
-  for (var i = 0; i < data.length; i++) {
-    if (data[i].phoneNumber == phnum) {
-      return data[i]
+    for (var i = 0; i < data.length; i++) {
+      if (data[i].tradeID == id) {
+        return data[i]
+      }
     }
-  }
-  return false
-};
+    return false
 
-Database.prototype.getTradeInfoById = function(id) {
-  data = Database.readDatabase("TradeInfo")
+  };
 
-  for (var i = 0; i < data.length; i++) {
-    if (data[i].tradeID == id) {
-      return data[i]
+  getTradeInfoByBuyerId(bid) {
+    var data = this.readDatabase("TradeInfo")
+    var result = []
+
+    for (var i = 0; i < data.length; i++) {
+      if (data[i].buyer == bid) {
+        result.push(data[i])
+      }
     }
-  }
-  return false
+    return result
+  };
 
-};
+  //시간이 구간인지 확인하기
+  getTradeInfoByDate(dt) {
+    var data = this.readDatabase("TradeInfo")
+    var result = []
 
-Database.prototype.getTradeInfoByBuyerId = function(bid) {
-  data = Database.readDatabase("TradeInfo")
-  result = []
-
-  for (var i = 0; i < data.length; i++) {
-    if (data[i].buyer == bid) {
-      result.push(data[i])
+    for (var i = 0; i < data.length; i++) {
+      if (data[i].datetime == bt) {
+        result.push(data[i])
+      }
     }
-  }
-  return result
-};
+    return result
+  };
 
-//시간이 구간인지 확인하기
-Database.prototype.getTradeInfoByDate = function(dt) {
-  data = Database.readDatabase("TradeInfo")
-  result = []
+  getPrductById(id) {
+    var data = this.readDatabase("Product")
+    var result = []
 
-  for (var i = 0; i < data.length; i++) {
-    if (data[i].datetime == bt) {
-      result.push(data[i])
+    for (var i = 0; i < data.length; i++) {
+      if (data[i].ID == id) {
+        result.push(data[i])
+      }
     }
-  }
-  return result
-};
+    return result
+  };
 
-Database.prototype.getPrductById = function(id) {
-  data = Database.readDatabase("Product")
-  result = []
+  getPrductByName(name) {
+    var data = this.readDatabase("Product")
+    var result = []
 
-  for (var i = 0; i < data.length; i++) {
-    if (data[i].ID == id) {
-      result.push(data[i])
+    for (var i = 0; i < data.length; i++) {
+      if (data[i].name == name) {
+        result.push(data[i])
+      }
     }
-  }
-  return result
-};
+    return result
+  };
 
-Database.prototype.getPrductByName = function(name) {
-  data = Database.readDatabase("Product")
-  result = []
+  getPrductByIdnExpirationDate(id, date) {
+    var data = this.readDatabase("Product")
+    var result = []
 
-  for (var i = 0; i < data.length; i++) {
-    if (data[i].name == name) {
-      result.push(data[i])
+    for (var i = 0; i < data.length; i++) {
+      if (data[i].ID == id && data[i].expirationDate == date) {
+        result.push(data[i])
+      }
     }
-  }
-  return result
-};
+    return result
+  };
 
-Database.prototype.getPrductByIdnExpirationDate = function(id, date) {
-  data = Database.readDatabase("Product")
-  result = []
-
-  for (var i = 0; i < data.length; i++) {
-    if (data[i].ID == id && data[i].expirationDate == date) {
-      result.push(data[i])
+  getDiscountInfoByDate(date) {
+    var data = this.readDatabase("DiscountInfo")
+    var result = []
+    var now = new Date()
+    for (var i = 0; i < data.length; i++) {
+      startDate = new Date(date[i].startDate)
+      endDate = new Date(date[i].endDate)
+      if (now >= startDate && now <= endDate) {
+        result.push(data[i])
+      }
     }
-  }
-  return result
-};
+    return result
+  };
 
-Database.prototype.getDiscountInfoByDate = function(date) {
-  data = Database.readDatabase("DiscountInfo")
-  result = []
-  now = new Date()
-  for (var i = 0; i < data.length; i++) {
-    startDate = new Date(date[i].startDate)
-    endDate = new Date(date[i].endDate)
-    if (now >= startDate && now <= endDate) {
-      result.push(data[i])
+  getDiscountInfoByProductId(pid) {
+    var data = this.readDatabase("DiscountInfo")
+    var result = []
+    for (var i = 0; i < data.length; i++) {
+      if (date[i].productID == pid) {
+        result.push(data[i])
+      }
     }
-  }
-  return result
-};
+    return result
+  };
 
-Database.prototype.getDiscountInfoByProductId = function(pid) {
-  data = Database.readDatabase("DiscountInfo")
-  result = []
-  for (var i = 0; i < data.length; i++) {
-    if (date[i].productID == pid) {
-      result.push(data[i])
+  getOrderableProduct() {
+    var data = this.readDatabase("OrderProduct")
+    return data
+  };
+
+  insertNewMember(member) {
+    var data = this.readDatabase("Member")
+
+    for (var i = 0; i < data.length; i++) {
+      if (data[i].phoneNumber === member.phoneNumber) {
+        return false
+      }
     }
-  }
-  return result
-};
 
-Database.prototype.getOrderableProduct = function() {
-  data = Database.readDatabase("OrderProduct")
-  return data
-};
+    data.push({
+      "name": member.name,
+      "phoneNumber": member.phoneNumber,
+      "address": member.address,
+      "birthday": member.birthday,
+      "mileage": 0
+    })
 
-Database.prototype.insertNewMember = function(member) {
-  data = Database.readDatabase("Member")
+    this.writeDatabase("Member", data)
+    return true
+  };
 
-  for (var i = 0; i < data.length; i++) {
-    if (date[i].phoneNumber == member.phoneNumber) {
-      return false
-    }
-  }
+  insertNewTradeInfo(tInfo) {
+    var data = this.readDatabase("TradeInfo")
+    var tid = data.length
 
-  data.push({
-    "name": member.name,
-    "phoneNumber": member.phoneNumber,
-    "address": member.address,
-    "birthday": member.birthday,
-    "mileage": 0
-  })
-
-  Datebase.writeDatabase("member", data)
-  return true
-};
-
-Database.prototype.insertNewTradeInfo = function(tInfo) {
-  data = Database.readDatabase("TradeInfo")
-  tid = data.length
-
-  data.push({
-    "tradeID": tid,
-    "buyerID": tInfo.buyerID,
-    "payment": tInfo.totalPrice,
-    "deltaMileage": tInfo.deltaMileage,
-    "datetime": tInfo.tradeDatetime
-  })
-  Database.insertTradeProduct(tid, tInfo.products)
-  Database.writeDatabase("TradeInfo", data)
-};
-
-Database.prototype.insertTradeProduct = function(tid, list) {
-  data = Database.readDatabase("TradeProduct")
-
-  for (var i = 0; i < list.length; i++) {
     data.push({
       "tradeID": tid,
-      "productID": list[i].productID,
-      "productCount": list[i].count
+      "buyerID": tInfo.buyerID,
+      "payment": tInfo.totalPrice,
+      "deltaMileage": tInfo.deltaMileage,
+      "datetime": tInfo.tradeDatetime
     })
-  }
-  Database.writeDatabase("TradeProduct", data)
-};
+    this.insertTradeProduct(tid, tInfo.products)
+    this.writeDatabase("TradeInfo", data)
+  };
 
-Database.prototype.insertProduct = function(product) {
-  data = Database.readDatabase("product")
+  insertTradeProduct(tid, list) {
+    var data = this.readDatabase("TradeProduct")
 
-  for (var i = 0; i < data.length; i++) {
-    if (data[i].ID == product.id && data[i].expirationDate == product.expirationDate) {
-      data[i].name = product.productName
-      data[i].price = product.price
-      data[i].count = product.numberOfProduct
-      Database.writeDatabase("TradeInfo", data)
-      return;
+    for (var i = 0; i < list.length; i++) {
+      data.push({
+        "tradeID": tid,
+        "productID": list[i].productID,
+        "productCount": list[i].count
+      })
     }
-  }
+    this.writeDatabase("TradeProduct", data)
+  };
 
-  data.push({
-    "name": product.productName,
-    "ID": product.productID,
-    "price": product.price,
-    "expirationDate": product.expirationDate,
-    "count": product.numberOfProduct,
-  })
-  Database.writeDatabase("TradeInfo", data)
-};
+  insertProduct(product) {
+    var data = this.readDatabase("product")
 
-Database.prototype.insetNewDiscount = function(discnt) {
-  data = Databse.readDatabase("DiscountInfo")
-  method = ""
-  discountRate = 0
-  if (discnt.numberOfBuying) {
-    method = discnt.numberOfBuying + "+" + discnt.numberOfBonus
-  } else {
-    discountRate = discnt.discountRate
-  }
+    for (var i = 0; i < data.length; i++) {
+      if (data[i].ID == product.id && data[i].expirationDate == product.expirationDate) {
+        data[i].name = product.productName
+        data[i].price = product.price
+        data[i].count = product.numberOfProduct
+        Database.writeDatabase("TradeInfo", data)
+        return;
+      }
+    }
 
-  data.push({
-    "DiscountID": data.length,
-    "startDate": discnt.startDate,
-    "endDate": discnt.endDate,
-    "productID": discnt.productID,
-    "method": methd,
-    "discountRate": discountRate
-  })
+    data.push({
+      "name": product.productName,
+      "ID": product.productID,
+      "price": product.price,
+      "expirationDate": product.expirationDate,
+      "count": product.numberOfProduct,
+    })
+    this.writeDatabase("TradeInfo", data)
+  };
 
-  Database.writeDatabase("DiscountInfo", data)
-};
+  insetNewDiscount(discnt) {
+    var data = this.readDatabase("DiscountInfo")
+    var method = ""
+    var discountRate = 0
+    if (discnt.numberOfBuying) {
+      method = discnt.numberOfBuying + "+" + discnt.numberOfBonus
+    } else {
+      discountRate = discnt.discountRate
+    }
+
+    data.push({
+      "DiscountID": data.length,
+      "startDate": discnt.startDate,
+      "endDate": discnt.endDate,
+      "productID": discnt.productID,
+      "method": methd,
+      "discountRate": discountRate
+    })
+    this.writeDatabase("DiscountInfo", data)
+  };
+}

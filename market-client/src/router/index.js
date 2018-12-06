@@ -1,7 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import Main from '@/components/Main'
-import Buy from '@/components/Buy'
 import salescheck from '@/components/Salescheck'
 import stockcheck from '@/components/Stockcheck'
 import stockmodify from '@/components/Stockmodify'
@@ -17,21 +16,13 @@ import InputMemNum from '@/components/InputMemNum'
 import Refund from '@/components/Refund'
 import InputReceipt from '@/components/InputReceipt'
 
-
-
 Vue.use(Router)
-
 
 export default new Router({
   routes: [{
       path: '/',
       name: 'home',
       component: Main
-    },
-    {
-      path: '/buy',
-      name: 'buy',
-      component: Buy
     },
     {
       path: '/salescheck',
@@ -90,7 +81,7 @@ export default new Router({
       name: 'Payment',
       component: Payment
     }, {
-      path: '/Refund/:who',
+      path: '/Refund/:who/:id',
       name: 'Refund',
       component: Refund
     }, {

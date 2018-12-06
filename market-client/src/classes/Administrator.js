@@ -1,6 +1,7 @@
-function Administrator()  {
+export default new Administrator
+
+function Administrator() {
   this.password = "1q2w3e4r"
-  this.isLogin = false
 };
 
 Administrator.prototype.checkSales = function(startDate, endDate) {
@@ -30,12 +31,8 @@ Administrator.prototype.manageProduct = function(product) {
 };
 
 Administrator.prototype.loginAdmin = function(pwd) {
-  if (this.password == pwd) {
-    this.isLogin = true
+  if (this.password === pwd) {
+    return true
   }
-  return this.isLogin
-};
-
-Administrator.prototype.logoutAdmin = function() {
-  this.isLogin = false
+  return false
 };
