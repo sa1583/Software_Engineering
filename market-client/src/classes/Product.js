@@ -1,21 +1,24 @@
-function Product(id,name,date,number,price) {
+var Database = require("./Database")
+var DB = new Database();
+
+module.exports = class Product {
+  constructor(id, name, date, number, price) {
     this.productID = id
     this.productName = name
     this.expirationDate = date
     this.numberOfProduct = number
     this.price = price
-}
+  }
 
-Product.prototype.inventoryControl() = function(product){
-    Database.prototype.insertProduct(product)
-}
+  inventoryControl(product) {
+    DB.insertProduct(product)
+  }
 
-Product.prototype.addProduct() = function(list){
+  addProduct(list) {
     var digits = Math.floor(Math.random() * 90000000) + 10000000;
+    DB.insertTradeProduct(digits, list)
+  }
+  removeProduct() {
 
-    Database.prototype.insertTradeProduct(digits,list)
-}
-
-Product.prototype.removeProduct() = function(){
-
+  }
 }

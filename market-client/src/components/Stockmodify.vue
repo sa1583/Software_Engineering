@@ -1,7 +1,7 @@
 <template>
   <v-card>
     <v-card-title>
-      재고조회
+      재고관리
       <v-spacer></v-spacer>
       <v-text-field
         v-model="search"
@@ -23,20 +23,20 @@
         <td class="text-xs-center">{{ props.item.duedate }}</td>
         <td class="text-xs-center">
             <v-edit-dialog
-            :return-value.sync="props.item.number"
+            :return-value.sync="tNumber"
             large
             lazy
             persistent
-            @save="save"
+            @save="save(props.item.serialnumber, tNumber)"
             @cancel="cancel"
-            @open="open"
+            @open="open(props.item.number)"
             @close="close"
           >
             <div>{{ props.item.number }}</div>
             <div slot="input" class="mt-3 title">수량 변경</div>
             <v-text-field
               slot="input"
-              v-model="props.item.number"
+              v-model="tNumber"
               :rules="[max25chars]"
               label="Edit"
               single-line
@@ -54,9 +54,11 @@
 </template>
 
 <script>
+import 'url-search-params-polyfill'
   export default {
     data () {
       return {
+        tNumber: 0,
         search: '',
         max25chars: (v) => v.length <= 25 || 'Input too long!',
         pagination: {},
@@ -67,11 +69,11 @@
             sortable: false,
             value: 'name'
           },
-          { 
+          {
             text: '상품번호',
             align: 'center',
-            sortable: false, 
-            value: 'serialnumber' 
+            sortable: false,
+            value: 'serialnumber'
           },
           {
             text: '유통기한',
@@ -85,49 +87,46 @@
             value: 'number'
           },
         ],
-        desserts: [
-          {
-            value: false,
-            name: '요거트',
-            serialnumber: '01234',
-            duedate: '2018/12/05',
-            number : '5'
-            
-          },
-          {
-            value: false,
-            name: '아이스크림',
-            serialnumber: '67890',
-            duedate: '2018/12/06',
-          },
-          {
-            value: false,
-            name: '초콜릿',
-            serialnumber: '00000',
-            duedate: '2018/12/07'
-          }
-        ]
+        desserts: []
       }
     },
     methods: {
-      save () {
+      save (serial, number) {
+        var params = new URLSearchParams();
+        params.append("serial", serial);
+        params.append("number", number);
+
         this.snack = true
         this.snackColor = 'success'
         this.snackText = 'Data saved'
+        this.$http.get('/api/inertAllProduct', {
+          params: {
+            "productID": serial,
+            "productCount": number
+          }
+        }).then((response) => {
+
+        })
       },
       cancel () {
         this.snack = true
         this.snackColor = 'error'
         this.snackText = 'Canceled'
       },
-      open () {
+      open (n) {
         this.snack = true
         this.snackColor = 'info'
         this.snackText = 'Dialog opened'
+        this.tNumber = n
       },
       close () {
         console.log('Dialog closed')
       }
+    },
+    created(){
+      this.$http.get('/api/getAllProduct').then((response) => {
+        this.desserts = response.data
+      })
     }
   }
 </script>

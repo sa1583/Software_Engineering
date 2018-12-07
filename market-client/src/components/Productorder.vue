@@ -82,27 +82,14 @@
           { text: '개수', value: 'number',align: 'center' }
         ],
         desserts: [
-          {
-            value: false,
-            align: 'center',
-            name: '아이스크림',
-            number: 1
-          },
-          {
-            value: false,
-            align: 'center',
-            name: '요거트',
-            number: 1
-          },
-          {
-            value: false,
-            align: 'center',
-            name: '초콜릿',
-            number: 7
-          }
+
         ]
       }
     },
-    
+    created(){
+      this.$http.get('/api/getOrderableProduct').then((response) => {
+        this.desserts = response.data
+      })
+    }
   }
 </script>

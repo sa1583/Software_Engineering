@@ -1,24 +1,25 @@
-import Database from 'Database.js'
+var Database = require("./Database")
+var DB = new Database();
 
-function Discountinfo(start,end,method,id) {
-    this.startDate = start
-    this.endDate = end
-    this.discountMethod = method
-    this.productId = id
-}
+module.exports = class Discountinfo {
+  constructor(obj) {
+    this.startDate = obj.startDate
+    this.endDate = obj.endDate
+    this.discountMethod = obj.discountMethod
+    this.productId = obj.id
+  }
+  getDiscountInfoById(id) {
+    return DB.getDiscountInfoByProductId(id)
+  }
 
-Discountinfo.prototype.getDiscountInfoById() = function(id){
-    return Database.getDiscountInfoByProductId(id)
-}
+  isOnSale(id) {
+    data = DB.getDiscountInfoByProductId(id)
+    if (data == []) {
+      return false
+    } else return true
+  }
 
-Discountinfo.prototype.isOnSale() = function(id){
-    data = Database.getDiscountInfoByProductId(id)
-    if (data == []){
-        return false
-    }
-    else return true
+  getDiscountedPrice() {
 
-}
-Discountinfo.prototype.getDiscountedPrice() = function(){
-
+  }
 }

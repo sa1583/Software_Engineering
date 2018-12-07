@@ -1,13 +1,16 @@
 var Database = require('../../src/classes/Database.js')
+var Administrator = require('../../src/classes/Administrator.js')
 
 var express = require('express');
 var router = express.Router();
 var DB = new Database();
+var admin = new Administrator();
 
 /* GET users listing. */
 router.get('/:method', function(req, res, next) {
+  var result
   if (req.params.method == "singup") {
-    var result = DB.insertNewMember(req.query)
+    result = DB.insertNewMember(req.query)
     res.send(result)
   } else if (req.params.method == "searchMileage") {
     var member = DB.getMemberByPhonenumber(req.query.phoneNumber)
@@ -17,8 +20,12 @@ router.get('/:method', function(req, res, next) {
       result = DB.getTradeInfoByBuyerId(member.phoneNumber)
       res.send(result)
     }
-  } else if (req.params.method == "getTradeInfoById") {
-    var info = DB.getTradeInfoById()
+  } else if (req.params.method == "getOrderableProduct") {
+    res.send(DB.getOrderableProduct())
+  } else if (req.params.method == "getAllProduct") {
+    res.send(DB.getAllProduct())
+  } else if (req.params.method == "login") {
+    res.send(admin.loginAdmin(req.query.password))
   }
 });
 

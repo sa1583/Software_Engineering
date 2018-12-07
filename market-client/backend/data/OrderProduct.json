@@ -1,0 +1,32 @@
+[
+  {
+    "value": false,
+    "align": "center",
+    "name": "아이스크림",
+    "number": 1
+  },
+  {
+    "value": false,
+    "align": "center",
+    "name": "요거트",
+    "number": 1
+  },
+  {
+    "value": false,
+    "align": "center",
+    "name": "초콜릿",
+    "number": 7
+  },
+  {
+    "value": false,
+    "align": "center",
+    "name": "드드득 커피",
+    "number": 76
+  },
+  {
+    "value": false,
+    "align": "center",
+    "name": "스카치캔디",
+    "number": 15
+  }
+]

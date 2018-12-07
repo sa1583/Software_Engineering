@@ -40,11 +40,11 @@
             sortable: false,
             value: 'name'
           },
-          { 
+          {
             text: '매출액',
             align: 'center',
-            sortable: false, 
-            value: 'iron' 
+            sortable: false,
+            value: 'iron'
           }
         ],
         desserts: [
@@ -65,6 +65,9 @@
           }
         ]
       }
+    },
+    created() {
+
     }
   }
 </script>

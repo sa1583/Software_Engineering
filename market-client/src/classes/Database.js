@@ -64,6 +64,10 @@ module.exports = class Database {
     }
     return result
   };
+  getAllProduct() {
+    var data = this.readDatabase("Product")
+    return data
+  }
 
   getPrductById(id) {
     var data = this.readDatabase("Product")

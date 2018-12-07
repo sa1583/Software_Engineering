@@ -42,11 +42,11 @@
             sortable: false,
             value: 'name'
           },
-          { 
+          {
             text: '상품번호',
             align: 'center',
-            sortable: false, 
-            value: 'serialnumber' 
+            sortable: false,
+            value: 'serialnumber'
           },
           {
             text: '유통기한',
@@ -66,7 +66,7 @@
             value: false,
             name: 'Frozen Yogurt',
             serialnumber: '01234'
-            
+
           },
           {
             value: false,
@@ -80,6 +80,11 @@
           }
         ]
       }
+    },
+    created(){
+      this.$http.get('/api/getAllProduct').then((response) => {
+        this.desserts = response.data
+      })
     }
   }
 </script>
