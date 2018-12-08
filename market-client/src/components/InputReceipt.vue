@@ -1,7 +1,16 @@
 <template>
   <div>
-    <input v-model="trdid" placeholder="거래번호">
-    <button v-on:click='submit()'>환불 신청</button>
+     <v-layout row>
+          <v-flex xs12>
+            <v-text-field 
+            label="거래번호"
+            v-model ="trdid" 
+            name="tradeid"></v-text-field>
+          </v-flex>
+          <v-flex p>
+            <v-btn v-on:click='submit()'>환불 신청</v-btn>
+          </v-flex>
+      </v-layout>
   </div>
 </template>
 <script>

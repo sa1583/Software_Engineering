@@ -1,11 +1,11 @@
 <template>
   <div>
     <v-container style="width:60%; float:left">
-      <button class="short" v-on:click="movePage('SellectMemeberOrNot/buy')">구매</button>
-      <button class="short" v-on:click="movePage('SellectMemeberOrNot/refund')">환불</button><br>
-      <button class="long" v-on:click="movePage('CheckMileage')">마일리지 확인</button><br>
-      <button class="long" v-on:click="movePage('Signup')">회원가입</button><br>
-      <button class="long" v-on:click="movePage('LoginAdmin')">관리자 로그인</button><br>
+      <v-btn class="short" v-on:click="movePage('SellectMemeberOrNot/buy')">구매</v-btn>
+      <v-btn class="short" v-on:click="movePage('SellectMemeberOrNot/refund')">환불</v-btn><br>
+      <v-btn class="long" v-on:click="movePage('CheckMileage')">마일리지 확인</v-btn><br>
+      <v-btn class="long" v-on:click="movePage('Signup')">회원가입</v-btn><br>
+      <v-btn class="long" v-on:click="movePage('LoginAdmin')">관리자 로그인</v-btn><br>
     </v-container>
     <v-container style="width:40%; float:right">
       <v-card-title>
@@ -34,9 +34,9 @@ export default {
 
 <style>
   button.short{
-    width:45%;
+    width:42.5%;
   }
   button.long{
-    width:90.5%;
+    width:90%;
   }
 </style>

@@ -1,7 +1,7 @@
 <template>
   <div>
-    <input v-model="pnumber" placeholder="전화번호를 입력하세요">
-    <button v-on:click="movePage($route.params.method, pnumber)">확인</button>
+    <v-text-field v-model="pnumber" placeholder="전화번호를 입력하세요"></v-text-field>
+    <v-btn v-on:click="movePage($route.params.method, pnumber)">확인</v-btn>
   </div>
 </template>
 <script>

@@ -1,8 +1,9 @@
 <template>
   <div>
     비밀번호 입력:
-    <input v-model="password"></input>
-    <button v-on:click="movePage('AdminPage')">로그인</button>
+    <v-text-field v-model="password">
+    </v-text-field>
+    <v-btn v-on:click="movePage('AdminPage')">로그인</v-btn>
   </div>
 </template>
 <script>

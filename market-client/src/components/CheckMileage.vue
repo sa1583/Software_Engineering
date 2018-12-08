@@ -2,35 +2,32 @@
   <div>
     <div>
       <form>
-        <input v-model="pnum"></input>
-        <button v-on:click="search(pnum)">검색</button><br>
-        <table>
-          <tbody>
-            <tr>
-              <td></td>
-              <td></td>
-              <td></td>
-            </tr>
-          </tbody>
-        </table>
+        <v-layout row>
+          <v-flex xs12>
+            <v-text-field 
+            label="전화번호"
+            v-model ="pnum" 
+            name="phonenumber"></v-text-field>
+          </v-flex>
+          <v-flex p>
+            <v-btn v-on:click="search(pnum)">검색</v-btn>
+          </v-flex>
+        </v-layout>
       </form>
     </div>
-      <table>
-        <thead>
-          <tr>
-            <th>마일리지 변화량</th>
-            <th>내용</th>
-            <th>시간</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr v-for="it in item">
-            <td>{{it.deltaMileage}}</td>
-            <td>{{it.tradeDatetime}}</td>
-            <td>{{it.payment}}</td>
-          </tr>
-        </tbody>
-      </table>
+    <div>
+      <v-data-table
+      :headers="headers"
+      :items="item"
+      :search="search"
+      hide-actions
+      >
+        <template slot="items" >
+          <td class="text-xs-center">{{ item.deltaMileage }}</td>
+          <td class="text-xs-center">{{ item.tradeDatetime }}</td>
+          <td class="text-xs-center">{{ item.payment}}</td>
+        </template>
+      </v-data-table>
     <div>
     </div>
   </div>
@@ -43,7 +40,27 @@ export default {
   data () {
     return {
       msg: 'Welcome to Your Vue.js App',
-      item: []
+      item: [],
+      headers: [
+          {
+            text: '마일리지 변화량',
+            align: 'center',
+            sortable: false,
+            value: 'name'
+          },
+          {
+            text: '내용',
+            align: 'center',
+            sortable: false,
+            value: 'serialnumber'
+          },
+          {
+            text: '시간',
+            align: 'center',
+            sortable: false,
+            value: 'duedate'
+          },
+        ],
     }
   },
   methods:{
@@ -70,5 +87,6 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
+
 </style>

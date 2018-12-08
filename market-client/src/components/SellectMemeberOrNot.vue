@@ -1,7 +1,7 @@
 <template>
   <div>
-    <button v-on:click="movePage($route.params.method, true)">회원</button>
-    <button v-on:click="movePage($route.params.method, false)">비회원</button>
+    <v-btn v-on:click="movePage($route.params.method, true)">회원</v-btn>
+    <v-btn v-on:click="movePage($route.params.method, false)">비회원</v-btn>
   </div>
 </template>
 <script>

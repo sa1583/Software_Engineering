@@ -1,27 +1,11 @@
 <template>
   <div>
-    <form>
-      <table>
-        <thead>
-          <tr>
-            <th>이름</th>
-            <th>생년월일</th>
-            <th>주소</th>
-            <th>전화번호</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td><input v-model="name"></input></td>
-            <td><input v-model="birthday"></input></td>
-            <td><input v-model="address"></input></td>
-            <td><input v-model="phoneNumber"></input></td>
-          </tr>
-        </tbody>
-      </table>
-    </form>
+    <td><v-text-field v-model="name" label="이름"></v-text-field></td>
+    <td><v-text-field v-model="birthday" label="생년월일"></v-text-field></td>
+    <td><v-text-field v-model="address" label = "주소"></v-text-field></td>
+    <td><v-text-field v-model="phoneNumber" label = "전화번호"></v-text-field></td>
     <div>
-      <button v-on:click="submit(name, birthday, address, phoneNumber)">가입</button>
+      <v-btn v-on:click="submit(name, birthday, address, phoneNumber)">가입</v-btn>
     </div>
   </div>
 </template>
