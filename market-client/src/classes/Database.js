@@ -222,7 +222,7 @@ module.exports = class Database {
       "startDate": discnt.startDate,
       "endDate": discnt.endDate,
       "productID": discnt.productID,
-      "method": methd,
+      "method": method,
       "discountRate": discountRate
     })
     this.writeDatabase("DiscountInfo", data)

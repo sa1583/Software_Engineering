@@ -5,8 +5,7 @@
 </template>
 
 <script>
-
-
+import WebFontLoader from 'webfontloader'
 export default {
   name: 'App',
   mounted () {
@@ -25,8 +24,6 @@ export default {
 }
 </script>
 
-<style>
- #body{
-  margin-top: 30px; 
- }
+<style lang="stylus">
+ @import '~vuetify/src/stylus/settings/_variables.styl'
 </style>
