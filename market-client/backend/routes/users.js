@@ -9,7 +9,8 @@ var admin = new Administrator();
 /* GET users listing. */
 router.get('/:method', function(req, res, next) {
   var result
-  if (req.params.method == "singup") {
+  if (req.params.method === "signup") {
+    console.log(req.query)
     result = DB.insertNewMember(req.query)
     res.send(result)
   } else if (req.params.method == "searchMileage") {
@@ -37,8 +38,8 @@ router.get('/:method/:id', function(req, res, next) {
     res.send(DB.getTradeInfoById(req.params.id))
   } else if (req.params.method == "getTradeInfoById") {
     res.send(DB.getTradeInfoById(req.params.id))
-  }
-  res.send(req.params.id + req.params.method);
+  } else
+    res.send(req.params.id + req.params.method);
 });
 
 module.exports = router;
