@@ -9,7 +9,7 @@ var admin = new Administrator();
 /* GET users listing. */
 router.get('/:method', function(req, res, next) {
   var result
-  if (req.params.method === "signup") {
+  if (req.params.method == "signup") {
     console.log(req.query)
     result = DB.insertNewMember(req.query)
     res.send(result)
@@ -27,6 +27,10 @@ router.get('/:method', function(req, res, next) {
     res.send(DB.getAllProduct())
   } else if (req.params.method == "login") {
     res.send(admin.loginAdmin(req.query.password))
+  } else if(req.params.method == "insertNewDiscount") {
+    console.log(req.query)
+    result = DB.insertNewDiscount(req.query)
+    res.send(result)
   }
 });
 

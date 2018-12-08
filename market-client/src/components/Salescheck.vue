@@ -13,17 +13,15 @@
     </v-card-title>
     <v-data-table
       :headers="headers"
-      :items="desserts"
+      :items="termsales"
       :search="search"
       hide-actions
     >
       <template slot="items" slot-scope="props">
-        <td class="text-xs-center">{{ props.item.name }}</td>
-        <td class="text-xs-center">{{ props.item.iron }}</td>
+        <td class="text-xs-center">{{ props.item.term }}</td>
+        <td class="text-xs-center">{{ props.item.sales }}</td>
       </template>
-      <v-alert slot="no-results" :value="true" color="error" icon="warning">
-        Your search for "{{ search }}" found no results.
-      </v-alert>
+      
     </v-data-table>
   </v-card>
 </template>
@@ -38,30 +36,30 @@
             text: '기간',
             align: 'center',
             sortable: false,
-            value: 'name'
+            value: 'term'
           },
           {
             text: '매출액',
             align: 'center',
             sortable: false,
-            value: 'iron'
+            value: 'sales'
           }
         ],
-        desserts: [
+        termsales: [
           {
             value: false,
-            name: 'Frozen Yogurt',
-            iron: '1%'
+            term: '2018/10/10~2018/11/10',
+            sales: '100000000'
           },
           {
             value: false,
-            name: 'Ice cream sandwich',
-            iron: '1%'
+            term: '2018/11/10~2018/12/10',
+            sales: '2000000000'
           },
           {
             value: false,
-            name: 'Eclair',
-            iron: '7%'
+            term: '2018/12/10~2019/1/10',
+            sales: '30000000000'
           }
         ]
       }

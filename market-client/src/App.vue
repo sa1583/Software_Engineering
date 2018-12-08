@@ -6,21 +6,13 @@
 
 <script>
 import WebFontLoader from 'webfontloader'
+import Postdiscountinfo from './components/Postdiscountinfo.vue'
+
 export default {
-  name: 'App',
-  mounted () {
-    WebFontLoader.load({
-      google: {
-        families: ['Roboto:100,300,400,500,700,900']
-      },
-      active: this.setFontLoaded
-    })
+  data(){
   },
-  methods: {
-    setFontLoaded () {
-      this.$emit('font-loaded')
-    }
-  }
+  name: 'App',
+ 
 }
 </script>
 

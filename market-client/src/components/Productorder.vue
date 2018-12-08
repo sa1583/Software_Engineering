@@ -8,73 +8,34 @@
       :headers="headers"
       :items="desserts"
       :search="search"
-      :pagination.sync="pagination"
       hide-actions
       class="elevation-1"
     >
       <template slot="items" slot-scope="props">
         <td class="text-xs-center">
-            <v-edit-dialog
-            :return-value.sync="props.item.name"
-            large
-            lazy
-            persistent
-            @save="save"
-            @cancel="cancel"
-            @open="open"
-            @close="close"
-          >
             <p class="text-xs-center">{{ props.item.name }}</p>
-            <div slot="input" class="mt-3 title">수량 변경</div>
-            <v-text-field
-              slot="input"
-              v-model="props.item.name"
-              label="Edit"
-              single-line
-              counter
-              autofocus
-            ></v-text-field>
-          </v-edit-dialog>
         </td>
         <td class="text-xs-center">
-            <v-edit-dialog
-            :return-value.sync="props.item.number"
-            large
-            lazy
-            persistent
-            @save="save"
-            @cancel="cancel"
-            @open="open"
-            @close="close"
-          >
-            <div>{{ props.item.number }}</div>
-            <div slot="input" class="mt-3 title">수량 변경</div>
-            <v-text-field
-              slot="input"
-              v-model="props.item.number"
-              label="Edit"
-              single-line
-              counter
-              autofocus
+            <v-text-field 
+            v-model="inputnum"
             ></v-text-field>
-          </v-edit-dialog>
-
         </td>
       </template>
     </v-data-table>
     <div class="text-xs-center pt-2">
-      <v-btn>발주 넣기</v-btn>
+      <v-btn v-on:click="order()">발주 넣기</v-btn>
     </div>
   </div>
 </template>
 
 <script>
+  import router from '../router'
   export default {
     data () {
       return {
         search: '',
         pagination: {
-          sortBy: 'fat'
+          
         },
         selected: [],
         headers: [
@@ -86,6 +47,12 @@
         ]
       }
     },
+    methods:{
+      order(){
+        alert("발주완료")
+        router.push({path:"/AdminPage"})
+      },
+    },
     created(){
       this.$http.get('/api/getOrderableProduct').then((response) => {
         this.desserts = response.data
@@ -93,3 +60,6 @@
     }
   }
 </script>
+
+<style>
+</style>

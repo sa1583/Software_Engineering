@@ -12,10 +12,12 @@
 
 <script>
   export default {
-    data: () => ({
-      
-    }),
-     methods:{
+    data(){
+      return{
+        discountInfo:[]
+      }
+    },
+    methods:{
     post(ra, pr, st, end){
       if(ra && pr && st && en){
         this.$http.get('/api/insertNewDiscount',{
@@ -23,7 +25,9 @@
             discountRate: ra,
             startDate : st,
             endDate : end,
-            productID : pr
+            productID : pr,
+            numberOfBuying : 0,
+            numberOfBonus : 0
           }
         }).then((response) => {
           if(response.data){

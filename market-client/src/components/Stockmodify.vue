@@ -25,8 +25,6 @@
             <v-edit-dialog
             :return-value.sync="tNumber"
             large
-            lazy
-            persistent
             @save="save(props.item.serialnumber, tNumber)"
             @cancel="cancel"
             @open="open(props.item.number)"

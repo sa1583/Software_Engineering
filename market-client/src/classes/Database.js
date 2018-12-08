@@ -207,7 +207,7 @@ module.exports = class Database {
     this.writeDatabase("TradeInfo", data)
   };
 
-  insetNewDiscount(discnt) {
+  insertNewDiscount(discnt) {
     var data = this.readDatabase("DiscountInfo")
     var method = ""
     var discountRate = 0
