@@ -6,7 +6,7 @@
       <v-text-field
         v-model="search"
         append-icon="search"
-        label="기간 설정"
+        label="날짜 입력"
         single-line
         hide-details
       ></v-text-field>
@@ -21,7 +21,7 @@
         <td class="text-xs-center">{{ props.item.term }}</td>
         <td class="text-xs-center">{{ props.item.sales }}</td>
       </template>
-      
+
     </v-data-table>
   </v-card>
 </template>
@@ -33,7 +33,7 @@
         search: '',
         headers: [
           {
-            text: '기간',
+            text: '날짜',
             align: 'center',
             sortable: false,
             value: 'term'
@@ -48,18 +48,23 @@
         termsales: [
           {
             value: false,
-            term: '2018/10/10~2018/11/10',
+            term: '2018/10/10',
             sales: '100000000'
           },
           {
             value: false,
-            term: '2018/11/10~2018/12/10',
+            term: '2018/10/11',
             sales: '2000000000'
           },
           {
             value: false,
-            term: '2018/12/10~2019/1/10',
+            term: '2018/10/12',
             sales: '30000000000'
+          },
+          {
+            value: false,
+            term: '2018/10/13',
+            sales: '30000000'
           }
         ]
       }

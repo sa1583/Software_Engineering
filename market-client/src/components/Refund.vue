@@ -1,6 +1,6 @@
 <template>
-  <div id="pay">
-    <table class="table">
+  <div>
+    <table class="table" id="tables">
       <thead>
         <tr>
           <td class="c1">회원 전화번호</td>
@@ -11,14 +11,14 @@
       </thead>
       <tbody>
         <tr>
-          <td class="c1">010-0000-0000</td>
-          <td class="c2">18990</td>
+          <td class="c1">01022141583</td>
+          <td class="c2">13000</td>
           <td class="c3">0</td>
           <td class="c4">카드</td>
         </tr>
       </tbody>
     </table>
-    <table class="table">
+    <table class="table" id="tables">
       <thead>
         <tr>
           <td class="c1">물품 명</td>
@@ -38,12 +38,14 @@
     </table>
 
 
-
-    <button>환불</button>
+    <div id="rb">
+      <button v-on:click="refund($route.params.method)">환불</button>
+    </div>
   </div>
 </template>
 <script>
 
+import router from '../router'
 export default {
   name: 'Refund',
   data () {
@@ -53,6 +55,12 @@ export default {
         {name:'드드득커피', price:2000, count:3, total:6000}
       ]
     }
+  },
+  methods:{
+      refund(method){
+        alert("환불 완료!")
+        router.push({path:"/"})
+      }
   }
 }
 </script>
@@ -60,7 +68,10 @@ export default {
 button  {
   width : 10%
 }
-#pay {
+#rb {
+  text-align: center;
+}
+#tables {
   text-align: center;
 }
 .c1 {

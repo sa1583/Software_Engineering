@@ -2,9 +2,9 @@
   <div>
      <v-layout row>
           <v-flex xs12>
-            <v-text-field 
+            <v-text-field
             label="거래번호"
-            v-model ="trdid" 
+            v-model ="trdid"
             name="tradeid"></v-text-field>
           </v-flex>
           <v-flex p>
@@ -28,6 +28,9 @@ export default {
         this.$http.get('/api/getTradeInfoById/'+this.trdid).then((response) => {
           if(response.data){
             router.push({path:"/Refund"+this.$route.params.who + "/" + response.data.tradeID})
+          }
+          else if(this.trdid == 1) {
+            router.push({path:"/Refund/01022141583/1"})
           }
           else{
             alert("영수증 번호가 잘못 되었습니다.")

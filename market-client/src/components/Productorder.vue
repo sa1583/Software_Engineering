@@ -16,13 +16,12 @@
             <p class="text-xs-center">{{ props.item.name }}</p>
         </td>
         <td class="text-xs-center">
-          <v-container
-           align-content-center>
+          <v-container>
               <v-text-field
               type="number"
               min="0"
               value="0"
-
+              :rules="[posnum]"
               >
               </v-text-field>
           </v-container>
@@ -30,7 +29,7 @@
       </template>
     </v-data-table>
     <div class="text-xs-center pt-2">
-      <v-btn v-on:click="order(inputunum)">발주 넣기</v-btn>
+      <v-btn v-on:click="order()">발주 넣기</v-btn>
     </div>
   </div>
 </template>
@@ -41,10 +40,8 @@
     data () {
       return {
         search: '',
-        
-        pagination: {
-          
-        },
+        posnum: (v) => v>=0 || '너무 작은값입니다',
+        pagination:{},
         selected: [],
         headers: [
           { text: '상품', value: 'name',align: 'center', sortable: false},
@@ -57,10 +54,8 @@
     },
     methods:{
       order(inputnum){
-          console.log(inputnum)
-          alert("발주완료")
-          router.push({path:"/AdminPage"})
-  
+            alert("발주완료")
+            router.push({path:"/AdminPage"})
       },
     },
     created(){

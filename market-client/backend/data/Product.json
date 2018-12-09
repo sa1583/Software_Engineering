@@ -1,52 +1,23 @@
 [
   {
     "value": false,
-    "name": "Frozen Yogurt",
+    "name": "초콜릿",
     "serialnumber": "01234",
-    "duedate":"2018-12-07",
-    "number":7
+    "duedate":"2019-02-07",
+    "number":499
 
   },
   {
     "value": false,
-    "name": "Ice cream sandwich",
+    "name": "아이스크림",
     "serialnumber": "56789",
-    "duedate":"2018-12-07",
-    "number":7
+    "duedate":"2019-03-07",
+    "number":400
   },
   {
     "value": false,
-    "name": "Eclair",
+    "name": "드르륵커피",
     "serialnumber": "00000",
-    "duedate":"2018-12-07",
-    "number":7
-  },
-  {
-    "value": false,
-    "name": "Ice cream sandwich",
-    "serialnumber": "56789",
-    "duedate":"2018-12-07",
-    "number":7
-  },
-  {
-    "value": false,
-    "name": "Eclair",
-    "serialnumber": "00000",
-    "duedate":"2018-12-07",
-    "number":7
-  },
-  {
-    "value": false,
-    "name": "Ice cream sandwich",
-    "serialnumber": "56789",
-    "duedate":"2018-12-07",
-    "number":7
-  },
-  {
-    "value": false,
-    "name": "Eclair",
-    "serialnumber": "00000",
-    "duedate":"2018-12-07",
-    "number":7
-  }
-]
+    "duedate":"2019-10-21",
+    "number":300
+  }]
