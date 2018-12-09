@@ -35,9 +35,9 @@ module.exports = class Customer {
 
   buyProducts(products, mile) {
     var price = 0
-    //항목별 가격 책정
+
     for (var i = 0; i < products.length; i++) {
-      //할인 적용해서 prie에 더하기
+      price += products[i].price
     }
 
     if (price <= mile) {
@@ -47,8 +47,8 @@ module.exports = class Customer {
     this.mileage = this.mileage + this.calculateMileage(price)
 
     this.registerAsMember()
+    DB.insertTradeProduct()
     return price
-    //거래내역 데이터베이스 등록
   }
 
   useMileage(mile) {
@@ -61,14 +61,11 @@ module.exports = class Customer {
   }
 
   refund(tid) {
-    //tid 를 찾아서
     tradeInfo = DB.getTradeInfoById(tid)
     if (!tradeInfo) {
       return false
     }
     this.mileage = this.mileage - tradeInfo.deltaMileage
-    //마일리지 더하고 물품 찾아 더함
-    //거래내역 데이터베이스 등록
     this.registerAsMember()
   }
 
@@ -80,5 +77,4 @@ module.exports = class Customer {
     if (this.who)
       DB.insertNewMember(this)
   }
-
 }

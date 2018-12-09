@@ -5,7 +5,7 @@ module.exports = class Discountinfo {
   constructor(obj) {
     this.startDate = obj.startDate
     this.endDate = obj.endDate
-    this.discountMethod = obj.discountMethod
+    this.discountRated = obj.discountRate
     this.productId = obj.id
   }
   getDiscountInfoById(id) {
@@ -19,7 +19,11 @@ module.exports = class Discountinfo {
     } else return true
   }
 
-  getDiscountedPrice() {
-
+  getDiscountedPrice(num) {
+    product = DB.getProductById(this.productId)
+    if (this.isOnSale)
+      return num * product.price * ((100 - this.discountRate) / 100)
+    else
+      return num * product.price
   }
 }

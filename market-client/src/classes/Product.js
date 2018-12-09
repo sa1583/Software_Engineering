@@ -14,11 +14,10 @@ module.exports = class Product {
     DB.insertProduct(product)
   }
 
-  addProduct(list) {
-    var digits = Math.floor(Math.random() * 90000000) + 10000000;
-    DB.insertTradeProduct(digits, list)
+  addProduct(list, num) {
+    DB.insertTradeProduct(list, num)
   }
-  removeProduct() {
-
+  removeProduct(list, num) {
+    DB.insertTradeProduct(list, num * (-1))
   }
 }
