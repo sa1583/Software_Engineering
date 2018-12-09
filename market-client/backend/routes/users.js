@@ -30,7 +30,7 @@ router.get('/:method', function(req, res, next) {
   } else if(req.params.method == "insertNewDiscount") {
     console.log(req.query)
     result = DB.insertNewDiscount(req.query)
-    res.send(result)
+    res.send(true)
   }
 });
 

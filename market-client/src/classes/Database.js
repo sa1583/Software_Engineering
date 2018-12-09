@@ -209,22 +209,15 @@ module.exports = class Database {
 
   insertNewDiscount(discnt) {
     var data = this.readDatabase("DiscountInfo")
-    var method = ""
-    var discountRate = 0
-    if (discnt.numberOfBuying) {
-      method = discnt.numberOfBuying + "+" + discnt.numberOfBonus
-    } else {
-      discountRate = discnt.discountRate
-    }
-
+    
     data.push({
-      "DiscountID": data.length,
+      "discountRate": dicnt.discountRate,
+      "product": discnt.product,
       "startDate": discnt.startDate,
-      "endDate": discnt.endDate,
-      "productID": discnt.productID,
-      "method": method,
-      "discountRate": discountRate
+      "endDate": discnt.endDate
     })
+
     this.writeDatabase("DiscountInfo", data)
+    return true
   };
 }

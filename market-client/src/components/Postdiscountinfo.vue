@@ -11,40 +11,40 @@
 </template>
 
 <script>
-  export default {
-    data(){
-      return{
-        discountInfo:[]
-      }
-    },
-    methods:{
-    post(ra, pr, st, end){
-      if(ra && pr && st && en){
-        this.$http.get('/api/insertNewDiscount',{
-          params: {
-            discountRate: ra,
-            startDate : st,
-            endDate : end,
-            productID : pr,
-            numberOfBuying : 0,
-            numberOfBonus : 0
-          }
-        }).then((response) => {
-          if(response.data){
-            alert("등록완료")
-            router.push({path:"/"})
-          }
-          else{
-            alert("")
-          }
-        })
-      }
-      else{
-        alert("입력 내용을 확인해 주세요")
-      }
+import router from '../router'
+export default {
+  name: 'postdiscountinfo',
+  data(){
+    return{
+     msg: 'Welcome to Your Vue.js App'
+    }
+  },
+  methods:{
+    post(ra, pr, st, en){
+        if(ra && pr && st && en){
+          this.$http.get('/api/insertNewDiscount',{
+            params: {
+              discountRate: ra,
+              product : pr,
+              startDate : st,
+              endDate : en
+            }
+          }).then((response) => {
+            if(response.data){
+              alert("등록완료")
+              router.push({path:"/"})
+            }
+            else{
+              alert("오류")
+            }
+          })
+        }
+        else{
+          alert("입력 내용을 확인해 주세요")
+        }
     }
   }
-  }
+}
 
 </script>
 

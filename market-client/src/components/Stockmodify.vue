@@ -13,7 +13,7 @@
     </v-card-title>
     <v-data-table
       :headers="headers"
-      :items="desserts"
+      :items="productdata"
       :search="search"
       hide-actions
     >
@@ -43,9 +43,6 @@
             ></v-text-field>
           </v-edit-dialog>
         </td>
-      </template>
-      <template slot="pageText" slot-scope="{ pageStart, pageStop }">
-        From {{ pageStart }} to {{ pageStop }}
       </template>
     </v-data-table>
   </v-card>
@@ -82,10 +79,11 @@ import 'url-search-params-polyfill'
           {
             text: '개수',
             align: 'center',
-            value: 'number'
+            value: 'number',
+            sortable : false
           },
         ],
-        desserts: []
+        productdata: []
       }
     },
     methods: {
@@ -123,7 +121,7 @@ import 'url-search-params-polyfill'
     },
     created(){
       this.$http.get('/api/getAllProduct').then((response) => {
-        this.desserts = response.data
+        this.productdata = response.data
       })
     }
   }

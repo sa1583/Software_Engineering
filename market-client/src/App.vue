@@ -6,13 +6,11 @@
 
 <script>
 import WebFontLoader from 'webfontloader'
-import Postdiscountinfo from './components/Postdiscountinfo.vue'
 
 export default {
   data(){
   },
-  name: 'App',
- 
+  name: 'App'
 }
 </script>
 
