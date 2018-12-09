@@ -1,5 +1,5 @@
 <template>
-  <div id="pay">
+  <div>
     <table class="table" id="w6">
       <thead>
         <tr>
@@ -10,24 +10,24 @@
       </thead>
       <tbody>
         <tr>
-          <td class="c1">010-0000-0000</td>
+          <td class="c1">01022141583</td>
           <td class="c2">18990</td>
           <td class="c3">0</td>
         </tr>
       </tbody>
     </table>
     <form id="w4">
-      <input type="radio" id="one" value="One" v-model="picked">
+      <input type="radio" id="one" value="card" v-model="picked">
       <label for="one" id="mg">카드결제</label>
 
-      <input type="radio" id="two" value="Two" v-model="picked">
+      <input type="radio" id="two" value="cash" v-model="picked">
       <label for="two">현금결제</label>
 
       <input v-model="mileage" placeholder="사용할 마일리지">
       <br>
-      <button>결제</button>
+      <button v-on:click="movePage($route.params.method)">결제</button>
     </form>
-    <table class="table">
+    <table class="table" id="pl">
       <thead>
         <tr>
           <th class="c1">물품 명</th>
@@ -63,6 +63,12 @@ export default {
         {name:'드드득커피', price:2000, count:3, total:6000}
       ]
     }
+  },
+  methods:{
+      movePage(method, isMember){
+        alert("구매 완료!")
+        router.push({path:"/"})
+      }
   }
 }
 </script>
@@ -78,19 +84,22 @@ th {
   box-sizing: border-box;
   float: left;
   height: 100px;
-}
-#pay {
   text-align: center;
 }
+#pl {
+  text-align: center;
+}
+
 #w4 {
   width : 30%;
   box-sizing: border-box;
-  float: left;
+  float: right;
   height: 100px;
   padding: 10px;
   border: 1px solid black;
   margin: 15px;
   box-shadow: 5px 5px 10px 1px lightgray;
+  text-align: center;
 }
 #mg {
   margin-right: 20px;
