@@ -31,6 +31,9 @@ router.get('/:method', function(req, res, next) {
     console.log(req.query)
     result = DB.insertNewDiscount(req.query)
     res.send(true)
+  } else if(req.params.method == "getAllDiscountInfo"){
+    console.log()
+    res.send(DB.getAllDiscountInfo())
   }
 });
 

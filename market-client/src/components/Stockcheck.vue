@@ -6,7 +6,7 @@
       <v-text-field
         v-model="search"
         append-icon="search"
-        label="검색 방법"
+        label="상품 이름"
         single-line
         hide-details
       ></v-text-field>
@@ -23,9 +23,6 @@
         <td class="text-xs-center">{{ props.item.duedate }}</td>
         <td class="text-xs-center">{{ props.item.number }}</td>
       </template>
-      <v-alert slot="no-results" :value="true" color="error" icon="warning">
-        Your search for "{{ search }}" found no results.
-      </v-alert>
     </v-data-table>
   </v-card>
 </template>
@@ -62,22 +59,6 @@
           },
         ],
         desserts: [
-          {
-            value: false,
-            name: 'Frozen Yogurt',
-            serialnumber: '01234'
-
-          },
-          {
-            value: false,
-            name: 'Ice cream sandwich',
-            serialnumber: '56789'
-          },
-          {
-            value: false,
-            name: 'Eclair',
-            serialnumber: '00000'
-          }
         ]
       }
     },

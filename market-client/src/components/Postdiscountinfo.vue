@@ -32,7 +32,7 @@ export default {
           }).then((response) => {
             if(response.data){
               alert("등록완료")
-              router.push({path:"/"})
+              router.push({path:"/AdminPage"})
             }
             else{
               alert("오류")

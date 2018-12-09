@@ -118,6 +118,10 @@ module.exports = class Database {
     }
     return result
   };
+  getAllDiscountInfo(){
+    var data = this.readDatabase("DiscountInfo")
+    return data
+  };
 
   getDiscountInfoByProductId(pid) {
     var data = this.readDatabase("DiscountInfo")
@@ -211,7 +215,7 @@ module.exports = class Database {
     var data = this.readDatabase("DiscountInfo")
     
     data.push({
-      "discountRate": dicnt.discountRate,
+      "discountRate": discnt.discountRate,
       "product": discnt.product,
       "startDate": discnt.startDate,
       "endDate": discnt.endDate
