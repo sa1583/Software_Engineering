@@ -12,18 +12,25 @@
       class="elevation-1"
     >
       <template slot="items" slot-scope="props">
-        <td class="text-xs-center">
+        <td class="text-xs-center" >
             <p class="text-xs-center">{{ props.item.name }}</p>
         </td>
         <td class="text-xs-center">
-            <v-text-field 
-            v-model="inputnum"
-            ></v-text-field>
+          <v-container
+           align-content-center>
+              <v-text-field
+              type="number"
+              min="0"
+              value="0"
+
+              >
+              </v-text-field>
+          </v-container>
         </td>
       </template>
     </v-data-table>
     <div class="text-xs-center pt-2">
-      <v-btn v-on:click="order()">발주 넣기</v-btn>
+      <v-btn v-on:click="order(inputunum)">발주 넣기</v-btn>
     </div>
   </div>
 </template>
@@ -34,13 +41,14 @@
     data () {
       return {
         search: '',
+        
         pagination: {
           
         },
         selected: [],
         headers: [
-          { text: '상품', value: 'name',align: 'center'},
-          { text: '개수', value: 'number',align: 'center' }
+          { text: '상품', value: 'name',align: 'center', sortable: false},
+          { text: '개수', value: 'number',align: 'center', sortable: false}
         ],
         desserts: [
 
@@ -48,9 +56,11 @@
       }
     },
     methods:{
-      order(){
-        alert("발주완료")
-        router.push({path:"/AdminPage"})
+      order(inputnum){
+          console.log(inputnum)
+          alert("발주완료")
+          router.push({path:"/AdminPage"})
+  
       },
     },
     created(){
