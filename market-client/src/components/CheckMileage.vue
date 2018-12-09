@@ -4,9 +4,9 @@
       <form>
         <v-layout row>
           <v-flex xs12>
-            <v-text-field 
+            <v-text-field
             label="전화번호"
-            v-model ="pnum" 
+            v-model ="pnum"
             name="phonenumber"></v-text-field>
           </v-flex>
           <v-flex p>
@@ -36,7 +36,7 @@
 <script>
 import router from '../router'
 export default {
-  name: 'SellectBuynRefund',
+  name: 'CheckMileage',
   data () {
     return {
       msg: 'Welcome to Your Vue.js App',

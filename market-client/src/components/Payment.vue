@@ -10,8 +10,8 @@
       </thead>
       <tbody>
         <tr>
-          <td class="c1">01022141583</td>
-          <td class="c2">18990</td>
+          <td class="c1">0000</td>
+          <td class="c2">13000</td>
           <td class="c3">0</td>
         </tr>
       </tbody>
@@ -25,7 +25,7 @@
 
       <input v-model="mileage" placeholder="사용할 마일리지">
       <br>
-      <button v-on:click="movePage($route.params.method)">결제</button>
+      <button v-on:click="pay($route.params.method)">결제</button>
     </form>
     <table class="table" id="pl">
       <thead>
@@ -52,7 +52,7 @@
   </div>
 </template>
 <script>
-
+import router from '../router'
 export default {
   name: 'Payment',
   data () {
@@ -65,7 +65,7 @@ export default {
     }
   },
   methods:{
-      movePage(method, isMember){
+      pay(method){
         alert("구매 완료!")
         router.push({path:"/"})
       }
